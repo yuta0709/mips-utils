@@ -11,6 +11,7 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 struct Args {
     input_file: PathBuf,
+    output_file: PathBuf,
 }
 
 fn to_twos_complement(n: u32, bits: u32) -> i32 {
@@ -44,7 +45,7 @@ fn register_name(r: u32) -> Option<String> {
 fn main() -> Result<()> {
     let args = Args::parse();
     let input_file = File::open(args.input_file)?;
-    let output_file = File::create("output.txt")?;
+    let output_file = File::create(args.output_file)?;
     let mut writer = BufWriter::new(output_file);
 
     let reader = BufReader::new(input_file);
