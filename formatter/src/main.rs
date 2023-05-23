@@ -23,7 +23,7 @@ fn main() -> Result<()> {
     for (index, line) in reader.lines().enumerate() {
         let line = line?;
         writer.write(format!("when \"{:06b}\" => \n", index).as_bytes())?;
-        writer.write(format!("\tIMOut <= \"{}\"\n", line).as_bytes())?;
+        writer.write(format!("\tIMOut <= \"{}\";\n", line).as_bytes())?;
     }
     Ok(())
 }
